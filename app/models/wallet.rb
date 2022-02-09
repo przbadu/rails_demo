@@ -3,7 +3,7 @@ class Wallet < ApplicationRecord
   acts_as_paranoid
 
   # monetize
-  monetize :balance
+  monetize :balance_cents
 
   # associations
   belongs_to :user

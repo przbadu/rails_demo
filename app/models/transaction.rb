@@ -3,7 +3,7 @@ class Transaction < ApplicationRecord
   acts_as_paranoid
 
   # monetize
-  monetize :amount
+  monetize :amount_cents
 
   # enum
   enum :transaction_type, %i[income expense], default: :expense, suffix: :type
