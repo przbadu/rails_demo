@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction_at: 2022-02-09 10:06:43
+  notes: MyText
+  amount: MyString
+  transaction_type: 1
+  wallet: one
+  category: one
+  deleted_at: 2022-02-09 10:06:43
+  user: one
+
+two:
+  transaction_at: 2022-02-09 10:06:43
+  notes: MyText
+  amount: MyString
+  transaction_type: 1
+  wallet: two
+  category: two
+  deleted_at: 2022-02-09 10:06:43
+  user: two

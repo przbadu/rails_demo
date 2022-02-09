@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_020616) do
+ActiveRecord::Schema.define(version: 2022_02_09_042143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.string "color"
+    t.datetime "deleted_at", precision: 6
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deleted_at"], name: "index_categories_on_deleted_at"
+    t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
+    t.datetime "transaction_at", precision: 6
+    t.text "notes"
+    t.integer "transaction_type"
+    t.datetime "deleted_at", precision: 6
+    t.bigint "wallet_id", null: false
+    t.bigint "category_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_transactions_on_category_id"
+    t.index ["deleted_at"], name: "index_transactions_on_deleted_at"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.index ["wallet_id"], name: "index_transactions_on_wallet_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +57,22 @@ ActiveRecord::Schema.define(version: 2022_02_09_020616) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wallets", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.string "color"
+    t.integer "balance_cents", default: 0, null: false
+    t.string "balance_currency", default: "USD", null: false
+    t.datetime "deleted_at", precision: 6
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deleted_at"], name: "index_wallets_on_deleted_at"
+    t.index ["user_id"], name: "index_wallets_on_user_id"
+  end
+
+  add_foreign_key "categories", "users"
+  add_foreign_key "transactions", "categories"
+  add_foreign_key "transactions", "users"
+  add_foreign_key "transactions", "wallets"
 end
