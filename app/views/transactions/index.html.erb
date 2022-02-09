@@ -9,6 +9,8 @@
       <%= link_to "Show this transaction", transaction %>
     </p>
   <% end %>
+
+  <%== pagy_nav(@pagy) %>
 </div>
 
 <%= link_to "New transaction", new_transaction_path %>

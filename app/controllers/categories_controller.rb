@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories or /categories.json
   def index
-    @categories = current_user.categories
+    @pagy, @categories = pagy current_user.categories
   end
 
   # GET /categories/1 or /categories/1.json

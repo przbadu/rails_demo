@@ -3,7 +3,7 @@ class WalletsController < ApplicationController
 
   # GET /wallets or /wallets.json
   def index
-    @wallets = current_user.wallets
+    @pagy, @wallets = pagy current_user.wallets
   end
 
   # GET /wallets/1 or /wallets/1.json
