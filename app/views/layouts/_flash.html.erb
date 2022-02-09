@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <% flash.each do |type, msg| %>
+      <% if type == "notice" %>
+        <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+      <% elsif type == "alert" %>
+        <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert">
+      <% else %>
+        <div class='alert alert-<%= "#{type} bg-#{type} text-light border-0 alert-dismissible fade show" %>' role="alert">
+      <% end %>
+
+      <a href="#" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>
+      <%= msg %>
+    <% end %>
+  </div>
+</div>
