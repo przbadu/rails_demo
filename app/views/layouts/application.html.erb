@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BudgetPlanner</title>
+    <title>Expense Tracker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,8 +11,10 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
       <%= render 'layouts/header' %>
       <%= render 'layouts/sidebar' %>
-      <%= yield %>
+    <% end %>
+    <%= yield %>
   </body>
 </html>

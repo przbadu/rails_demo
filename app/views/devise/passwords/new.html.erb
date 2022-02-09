@@ -1,0 +1,44 @@
+<section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+        <div class="d-flex justify-content-center py-4">
+          <a href="index.html" class="logo d-flex align-items-center w-auto">
+            <img src="/assets/logo.png" alt="">
+            <span class="d-none d-lg-block">Expense Tracker</span>
+          </a>
+        </div><!-- End Logo -->
+
+        <div class="card mb-3">
+
+          <div class="card-body">
+
+            <div class="pt-4 pb-2">
+              <h5 class="card-title text-center pb-0 fs-4">Forgot your password?</h5>
+              <p class="text-center small">Enter your email and we will send you password reset instruction in your email address</p>
+            </div>
+
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'row g-3 needs-validation'  }) do |f| %>
+              <%= bootstrap_devise_error_messages! %>
+
+              <div class="form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-primary w-100 mt-2 mb-2' %>
+              </div>
+            <% end %>
+
+            <%= render 'devise/shared/links' %>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
