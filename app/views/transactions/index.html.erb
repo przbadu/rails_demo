@@ -1,16 +1,67 @@
-<p style="color: green"><%= notice %></p>
+<div class="pagetitle">
+  <h1>Transactions</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to 'Home', root_path, class: 'breakcrumb-item' %>
+      </li>
+      <li class="breadcrumb-item active">Transactions</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
 
-<h1>Transactions</h1>
+<section class="section">
+  <div class="row">
+    <div class="col-12">
 
-<div id="transactions">
-  <% @transactions.each do |transaction| %>
-    <%= render transaction %>
-    <p>
-      <%= link_to "Show this transaction", transaction %>
-    </p>
-  <% end %>
+      <div class="card">
 
-  <%== pagy_nav(@pagy) %>
-</div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
 
-<%= link_to "New transaction", new_transaction_path %>
+            <h5 class="card-title">TRANSACTION LIST</h5>
+            <%= link_to "ADD NEW TRANSACTION", new_transaction_path %>
+          </div>
+
+          <table class='table'>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Wallet</th>
+                <th>Amount</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @transactions.each do |transaction| %>
+                <tr>
+                  <td><%= format_date(transaction.transaction_at) %></td>
+                  <td><%= transaction.notes %></td>
+                  <td><%= transaction.category.name %></td>
+                  <td><%= transaction.wallet.name %></td>
+                  <td class="<%= amount_colorize(transaction.transaction_type) %>"><%= amount_to_currency(transaction.amount) %></td>
+                  <td>
+                    <%= link_to transaction_path(transaction) do %>
+                      <i class="bi bi-eye"></i>
+                    <% end %> |&nbsp;
+                    <%= link_to edit_transaction_path(transaction), class: 'text-info' do %>
+                      <i class="bi bi-pencil"></i>
+                    <% end %> |&nbsp;
+
+                    <%= link_to transaction_path(transaction), class: 'text-danger', data: { turbo_method: :delete } do %>
+                      <i class="bi bi-trash"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
