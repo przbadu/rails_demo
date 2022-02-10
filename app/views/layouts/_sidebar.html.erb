@@ -1,10 +1,10 @@
 <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
-      <a class="nav-link " href="index.html">
+      <%= active_link_to root_path, class: 'nav-link', active: :exact do %>
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
-      </a>
+      <% end %>
     </li><!-- End Dashboard Nav -->
 
     <%# <li class="nav-item"> %>
@@ -32,31 +32,31 @@
 
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="users-profile.html">
-        <i class="bi bi-person"></i>
+      <%= active_link_to transactions_path, class: 'nav-link collapsed' do %>
+        <i class="bi bi-cash-stack"></i>
         <span>Transactions</span>
-      </a>
+      <% end %>
     </li><!-- End Profile Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-faq.html">
-        <i class="bi bi-question-circle"></i>
+      <%= active_link_to categories_path, class: 'nav-link collapsed' do %>
+        <i class="bi bi-tags"></i>
         <span>Categories</span>
-      </a>
+      <% end %>
     </li><!-- End F.A.Q Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-register.html">
-        <i class="bi bi-card-list"></i>
+      <%= active_link_to wallets_path, class: 'nav-link collapsed' do %>
+        <i class="bi bi-wallet"></i>
         <span>Wallets</span>
-      </a>
+      <% end %>
     </li><!-- End Register Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-contact.html">
-        <i class="bi bi-envelope"></i>
+      <%= active_link_to '/contacts', class: 'nav-link collapsed' do %>
+        <i class="bi bi-person"></i>
         <span>Contact</span>
-      </a>
+      <% end %>
     </li><!-- End Contact Page Nav -->
 
   </ul>

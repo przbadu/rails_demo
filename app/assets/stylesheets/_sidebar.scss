@@ -71,11 +71,16 @@
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
   transition: 0.3;
-  background: #f6f9ff;
   padding: 10px 15px;
   border-radius: 4px;
+  color: #012970;
+  background: #fff;
+
+  &.active {
+    color: #4154f1 !important;
+    background: #f6f9ff !important;
+  }
 }
 .sidebar-nav .nav-link i {
   font-size: 16px;
