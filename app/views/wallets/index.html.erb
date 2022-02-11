@@ -1,16 +1,63 @@
-<p style="color: green"><%= notice %></p>
+<div class="pagetitle">
+  <h1>Wallets</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to 'Home', root_path, class: 'breakcrumb-item' %>
+      </li>
+      <li class="breadcrumb-item active">Wallets</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
 
-<h1>Wallets</h1>
+<section class="section">
+  <div class="row">
+    <div class="col-6">
 
-<div id="wallets">
-  <% @wallets.each do |wallet| %>
-    <%= render wallet %>
-    <p>
-      <%= link_to "Show this wallet", wallet %>
-    </p>
-  <% end %>
+      <div class="card">
 
-  <%== pagy_nav(@pagy) %>
-</div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
 
-<%= link_to "New wallet", new_wallet_path %>
+            <h5 class="card-title">WALLET LIST</h5>
+            <%= link_to "ADD NEW WALLET", new_wallet_path %>
+          </div>
+
+          <table class='table'>
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @wallets.each do |wallet| %>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <%= render 'shared/avatar_icon', color: wallet.color, icon: wallet.icon %>
+                      <%= wallet.name %>
+                    </div>
+                  </td>
+                  <td>
+                    <%= link_to edit_wallet_path(wallet), class: 'text-info' do %>
+                      <i class="bi bi-pencil"></i>
+                    <% end %> &nbsp;
+
+                    <%= link_to wallet_path(wallet), class: 'text-danger', data: { turbo_method: :delete } do %>
+                      <i class="bi bi-trash"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

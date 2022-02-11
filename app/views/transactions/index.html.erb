@@ -40,16 +40,26 @@
                 <tr>
                   <td><%= format_date(transaction.transaction_at) %></td>
                   <td><%= transaction.notes %></td>
-                  <td><%= transaction.category.name %></td>
-                  <td><%= transaction.wallet.name %></td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <%= render 'shared/avatar_icon', color: transaction.category.color, icon: transaction.category.icon %>
+                      <%= transaction.category.name %>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <%= render 'shared/avatar_icon', color: transaction.wallet.color, icon: transaction.wallet.icon %>
+                      <%= transaction.wallet.name %>
+                    </div>
+                  </td>
                   <td class="<%= amount_colorize(transaction.transaction_type) %>"><%= amount_to_currency(transaction.amount) %></td>
                   <td>
                     <%= link_to transaction_path(transaction) do %>
                       <i class="bi bi-eye"></i>
-                    <% end %> |&nbsp;
+                    <% end %> &nbsp;
                     <%= link_to edit_transaction_path(transaction), class: 'text-info' do %>
                       <i class="bi bi-pencil"></i>
-                    <% end %> |&nbsp;
+                    <% end %> &nbsp;
 
                     <%= link_to transaction_path(transaction), class: 'text-danger', data: { turbo_method: :delete } do %>
                       <i class="bi bi-trash"></i>
