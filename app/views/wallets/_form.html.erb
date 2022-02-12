@@ -17,18 +17,18 @@
         <% end %>
 
         <div class="col-12 mb-2">
-          <%= form.label :name, style: "form-label" %>
-          <%= form.text_field :name %>
+          <%= form.label :name, class: "form-label" %>
+          <%= form.text_field :name, class: 'form-control' %>
         </div>
 
         <div class="col-12 mb-2" data-controller='color-picker'>
-          <%= form.label :color, style: "form-label" %>
+          <%= form.label :color, class: "form-label" %>
           <%= form.hidden_field :color, data: { target: 'color-picker.input' } %>
           <%= render 'shared/color_pickers', selected: form.object.color, colors: @random_colors %>
         </div>
 
         <div class="col-12 mb-2" data-controller="icon-picker">
-          <%= form.label :icon, style: "form-label" %>
+          <%= form.label :icon, class: "form-label" %>
           <%= form.hidden_field :icon, data: { target: 'icon-picker.input' } %>
           <%= render 'shared/icon_pickers', selected: form.object.icon, icons: WALLET_ICONS %>
         </div>

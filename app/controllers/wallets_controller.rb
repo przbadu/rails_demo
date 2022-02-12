@@ -1,6 +1,6 @@
 class WalletsController < ApplicationController
   before_action :set_wallet, only: %i[show edit update destroy]
-  before_action :generate_random_colors, only: %i[new edit]
+  before_action :generate_random_colors, only: %i[new edit create update]
 
   # GET /wallets or /wallets.json
   def index
