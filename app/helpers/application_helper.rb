@@ -18,4 +18,10 @@ module ApplicationHelper
 
     date.strftime('%b %d, %Y %H:%M %P')
   end
+
+  def generate_random_colors(count: 10)
+    colors = []
+    count.times { colors << format('%06x', (rand * 0xffffff)) }
+    colors
+  end
 end

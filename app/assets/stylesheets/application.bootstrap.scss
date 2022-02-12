@@ -22,3 +22,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.color-picker-wrapper {
+  display: flex;
+  align-items: center;
+
+  .color-picker-item {
+    cursor:pointer;
+    margin: 5px;
+    border-radius: 10px;
+    width: 32px;
+    height: 32px;
+  }
+}

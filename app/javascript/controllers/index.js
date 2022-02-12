@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
-import ColorizerController from "./colorizer_controller"
+import ColorPickerController from "./color_picker_controller.js"
+application.register("color-picker", ColorPickerController)
+
+import ColorizerController from "./colorizer_controller.js"
 application.register("colorizer", ColorizerController)

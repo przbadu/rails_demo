@@ -16,15 +16,27 @@
           </div>
         <% end %>
 
-        <div class="col-12" data-controller="color-picker">
-          <%= form.label :color, class: "form-label" %>
-          <%= form.text_field :color, class: 'form-control', placeholder: 'color', data: { target: 'color-picker.input' } %>
-          <div data-target="color-picker.picker"></div>
-        </div>
-
         <div class="col-12">
           <%= form.label :name, class: "form-label" %>
           <%= form.text_field :name, class: 'form-control' %>
+        </div>
+
+
+        <div class="col-12" data-controller="color-picker">
+          <%= form.label :color, class: "form-label" %>
+          <%= form.text_field :color, class: 'form-control',
+            placeholder: 'color', data: { target: 'color-picker.input' } %>
+          <div class="color-picker-wrapper">
+            <% generate_random_colors.each do |color| %>
+              <a
+                  class='color-picker-item'
+                  style="background-color: #<%= color %>"
+                  data-normal="value"
+                  data-color="<%= color %>"
+                  data-action="color-picker#click">
+              </a>
+            <% end %>
+          </div>
         </div>
 
         <div class="col-12">
