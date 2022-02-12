@@ -18,4 +18,12 @@ class Transaction < ApplicationRecord
   validates :notes, presence: true
   validates :amount, presence: true
   validates :transaction_type, presence: true
+
+  # scopes
+  scope :filter_by_date, ->(from, to = Time.current) { where(transaction_at: from..to) }
+
+  # sum total amount and return money object
+  def self.total_cents
+    Money.from_cents sum(:amount_cents)
+  end
 end

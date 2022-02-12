@@ -1,0 +1,52 @@
+<div class="col-xxl-4 col-md-6" data-controller="dashboard-amount-loader">
+  <div class="card info-card sales-card">
+
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown">
+        <small data-dashboard-amount-loader-target="filter">This Month</small>
+        <i class="mdi mdi-chevron-down"></i>
+      </a>
+
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        <li class="dropdown-header text-start">
+          <h6>Filter</h6>
+        </li>
+
+        <li>
+          <a class="dropdown-item"
+             href="#"
+             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount.json?filter_date=today"
+             data-action="dashboard-amount-loader#load">Today</a>
+        </li>
+        <li>
+          <a class="dropdown-item"
+             href="#"
+             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount.json?filter_date=month"
+             data-action="dashboard-amount-loader#load">This Month</a>
+        </li>
+        <li>
+          <a class="dropdown-item"
+             href="#"
+             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount.json?filter_date=year"
+             data-action="dashboard-amount-loader#load">This Year</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">
+        <%= filter.humanize %>
+      </h5>
+
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <%= content_tag :span, nil, class: "mdi mdi-arrow-#{filter == 'income' ? 'up text-success' : 'down text-danger'}" %>
+        </div>
+        <div class="ps-3">
+          <h6 data-dashboard-amount-loader-target="amount"><%= amount %></h6>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
