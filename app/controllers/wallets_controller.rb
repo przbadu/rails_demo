@@ -1,5 +1,6 @@
 class WalletsController < ApplicationController
   before_action :set_wallet, only: %i[show edit update destroy]
+  before_action :generate_random_colors, only: %i[new edit]
 
   # GET /wallets or /wallets.json
   def index
@@ -11,7 +12,10 @@ class WalletsController < ApplicationController
 
   # GET /wallets/new
   def new
-    @wallet = current_user.wallets.new
+    @wallet = current_user.wallets.new(
+      color: @random_colors[0],
+      icon: WALLET_ICONS[0]
+    )
   end
 
   # GET /wallets/1/edit

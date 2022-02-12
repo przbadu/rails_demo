@@ -1,42 +1,44 @@
-<%= form_with(model: wallet) do |form| %>
-  <% if wallet.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(wallet.errors.count, "error") %> prohibited this wallet from being saved:</h2>
+<div class="col-6">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"></h5>
 
-      <ul>
-        <% wallet.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+      <%= form_with(model: wallet) do |form| %>
+        <% if wallet.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(wallet.errors.count, "error") %> prohibited this wallet from being saved:</h2>
+
+            <ul>
+              <% wallet.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="col-12 mb-2">
+          <%= form.label :name, style: "form-label" %>
+          <%= form.text_field :name %>
+        </div>
+
+        <div class="col-12 mb-2" data-controller='color-picker'>
+          <%= form.label :color, style: "form-label" %>
+          <%= form.hidden_field :color, data: { target: 'color-picker.input' } %>
+          <%= render 'shared/color_pickers', selected: form.object.color, colors: @random_colors %>
+        </div>
+
+        <div class="col-12 mb-2" data-controller="icon-picker">
+          <%= form.label :icon, style: "form-label" %>
+          <%= form.hidden_field :icon, data: { target: 'icon-picker.input' } %>
+          <%= render 'shared/icon_pickers', selected: form.object.icon, icons: WALLET_ICONS %>
+        </div>
+
+
+        <div>
+          <%= form.submit nil, class: 'btn btn-success mt-2' %>
+          <%= link_to "Cancel", wallets_path, class: 'btn btn-danger mt-2' %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
   </div>
-
-  <div>
-    <%= form.label :icon, style: "display: block" %>
-    <%= form.text_field :icon %>
-  </div>
-
-  <div>
-    <%= form.label :color, style: "display: block" %>
-    <%= form.text_field :color %>
-  </div>
-
-  <div>
-    <%= form.label :balance, style: "display: block" %>
-    <%= form.text_field :balance %>
-  </div>
-
-  <div>
-    <%= form.label :deleted_at, style: "display: block" %>
-    <%= form.datetime_field :deleted_at %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
