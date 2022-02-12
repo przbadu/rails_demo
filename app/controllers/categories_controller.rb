@@ -12,7 +12,10 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = current_user.categories.new(color: @random_colors[0])
+    @category = current_user.categories.new(
+      color: @random_colors[0],
+      icon: CATEGORY_ICONS[0]
+    )
   end
 
   # GET /categories/1/edit

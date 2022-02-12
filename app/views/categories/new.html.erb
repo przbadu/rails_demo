@@ -1,9 +1,16 @@
-<h1>New category</h1>
+<div class="pagetitle">
+  <h1>Add Categories</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to 'Home', root_path, class: 'breakcrumb-item' %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to 'Categories', categories_path, class: 'breakcrumb-item' %>
+      </li>
+      <li class="breadcrumb-item active">Add Category</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
 
 <%= render "form", category: @category %>
-
-<br>
-
-<div>
-  <%= link_to "Back to categories", categories_path %>
-</div>
