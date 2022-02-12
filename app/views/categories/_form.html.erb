@@ -1,7 +1,7 @@
 <div class="col-6">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Vertical Form</h5>
+      <h5 class="card-title"></h5>
 
       <%= form_with(model: category) do |form| %>
         <% if category.errors.any? %>
@@ -16,34 +16,25 @@
           </div>
         <% end %>
 
-        <div class="col-12">
+        <div class="col-12 mb-2">
           <%= form.label :name, class: "form-label" %>
           <%= form.text_field :name, class: 'form-control' %>
         </div>
 
-
-        <div class="col-12" data-controller="color-picker">
+        <div class="col-12 mb-2" data-controller="color-picker">
           <%= form.label :color, class: "form-label" %>
-          <%= form.text_field :color, class: 'form-control',
-            placeholder: 'color', data: { target: 'color-picker.input' } %>
-          <div class="color-picker-wrapper">
-            <% generate_random_colors.each do |color| %>
-              <a
-                  class='color-picker-item'
-                  style="background-color: #<%= color %>"
-                  data-normal="value"
-                  data-color="<%= color %>"
-                  data-action="color-picker#click">
-              </a>
-            <% end %>
-          </div>
+          <%= form.hidden_field :color,
+            class: 'form-control',
+            placeholder: 'color', data: { target: 'color-picker.input' }
+          %>
+          <%= render 'shared/color_pickers', selected: form.object.color, colors: @random_colors %>
         </div>
 
-        <div class="col-12">
+        <div class="col-12" data-controller="icon-picker">
           <%= form.label :icon, class: "form-label" %>
-          <%= form.text_field :icon, class: 'form-control' %>
+          <%= form.hidden_field :icon, class: 'form-control', data: { target: 'icon-picker.input' } %>
+          <%= render 'shared/icon_pickers', selected: form.object.icon, icons: CATEGORY_ICONS %>
         </div>
-
 
         <div>
           <%= form.submit nil, class: 'btn btn-success mt-2' %>

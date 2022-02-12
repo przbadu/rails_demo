@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show edit update destroy]
+  before_action :generate_random_colors, only: %i[new edit]
 
   # GET /categories or /categories.json
   def index
@@ -11,7 +12,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = current_user.categories.new
+    @category = current_user.categories.new(color: @random_colors[0])
   end
 
   # GET /categories/1/edit

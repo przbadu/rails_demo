@@ -9,3 +9,6 @@ application.register("color-picker", ColorPickerController)
 
 import ColorizerController from "./colorizer_controller.js"
 application.register("colorizer", ColorizerController)
+
+import IconPickerController from "./icon_picker_controller.js"
+application.register("icon-picker", IconPickerController)

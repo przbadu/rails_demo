@@ -5,7 +5,14 @@ export default class extends Controller {
   static targets = ['input']
 
   click(event) {
-    const color = event.target.dataset?.color
-    this.inputTarget.value = color
+    event.preventDefault()
+    document.querySelectorAll('.color-picker-item').forEach(el => el.innerHTML = null)
+    const target = event.target
+
+    const iconEl = document.createElement('i')
+    iconEl.classList.add('mdi')
+    iconEl.classList.add('mdi-check')
+    target.appendChild(iconEl)
+    this.inputTarget.value = target.dataset.color
   }
 }

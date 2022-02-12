@@ -1,0 +1,18 @@
+<div class="col-12">
+  <%# default icon %>
+  <a class='icon-picker-item bg-success text-white' data-icon="<%= selected %>" data-action="icon-picker#click">
+    <i class="mdi mdi-<%= selected %>"></i>
+  </a>
+
+  <%# random colors %>
+  <% icons.each do |icon| %>
+    <%- next if icon == selected %>
+
+    <a
+        class='icon-picker-item'
+        data-icon="<%= icon %>"
+        data-action="icon-picker#click">
+        <i class="mdi mdi-<%= icon %>"></i>
+    </a>
+  <% end %>
+</div>
