@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CashflowFilterController from "./cashflow_filter_controller.js"
+application.register("cashflow-filter", CashflowFilterController)
+
 import ColorPickerController from "./color_picker_controller.js"
 application.register("color-picker", ColorPickerController)
 
