@@ -74,6 +74,10 @@ GEM
       activesupport (>= 5.2, < 7.1)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    airbrake (13.0.0)
+      airbrake-ruby (~> 6.0)
+    airbrake-ruby (6.0.2)
+      rbtree3 (~> 0.5)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.10.2)
@@ -105,6 +109,10 @@ GEM
       warden (~> 1.2.3)
     devise-bootstrap-views (1.1.0)
     digest (3.1.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -197,6 +205,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    rbtree3 (0.7.0)
     redis (4.5.1)
     regexp_parser (2.2.0)
     reline (0.3.1)
@@ -251,6 +260,7 @@ PLATFORMS
 DEPENDENCIES
   active_link_to
   acts_as_paranoid
+  airbrake (~> 13.0)
   bootsnap
   capybara
   chartkick
@@ -258,6 +268,7 @@ DEPENDENCIES
   debug
   devise
   devise-bootstrap-views (~> 1.0)
+  dotenv-rails
   jbuilder
   jsbundling-rails
   money-rails
