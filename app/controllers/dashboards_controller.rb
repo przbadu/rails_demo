@@ -4,6 +4,7 @@ class DashboardsController < ApplicationController
   def index
     set_income_amount
     set_expense_amount
+    set_balance_amount
   end
 
   def income_amount
@@ -31,6 +32,10 @@ class DashboardsController < ApplicationController
 
   def set_expense_amount
     @expense_amount = current_user.transactions.expense_type.filter_by_date(@from, @to).load_async.total_cents
+  end
+
+  def set_balance_amount
+    @balance_amount = current_user.wallets.total_cents
   end
 
   def set_filters

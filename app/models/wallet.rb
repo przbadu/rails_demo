@@ -10,4 +10,9 @@ class Wallet < ApplicationRecord
 
   # validations
   validates :name, presence: true
+
+  # sum total balance and return money object
+  def self.total_cents
+    Money.from_cents sum(:balance_cents)
+  end
 end

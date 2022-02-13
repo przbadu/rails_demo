@@ -1,0 +1,21 @@
+<div class="col-xxl-4 col-md-6" data-controller="dashboard-amount-loader">
+  <div class="card info-card sales-card">
+    <div class="card-body">
+      <h5 class="card-title">
+        Your Current Balance
+      </h5>
+
+      <div class="d-flex align-items-center">
+        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+          <%= content_tag :span, nil, class: "mdi mdi-cash text-danger" %>
+        </div>
+        <div class="ps-3">
+          <h6 data-dashboard-amount-loader-target="amount"><%= amount %></h6>
+        </div>
+      </div>
+
+      <div class="w-100 d-flex justify-content-center" style="height: 37px;"></div>
+    </div>
+
+  </div>
+</div>

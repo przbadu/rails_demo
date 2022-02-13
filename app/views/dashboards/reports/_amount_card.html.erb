@@ -1,5 +1,5 @@
 <div class="col-xxl-4 col-md-6" data-controller="dashboard-amount-loader">
-  <div class="card info-card sales-card">
+  <div class="card info-card <%= filter == 'income' ? 'revenue' : 'sales' %>-card">
 
     <div class="filter">
       <a class="icon" href="#" data-bs-toggle="dropdown">
@@ -15,19 +15,19 @@
         <li>
           <a class="dropdown-item"
              href="#"
-             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount.json?filter_date=today"
+             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount?filter_date=today"
              data-action="dashboard-amount-loader#load">Today</a>
         </li>
         <li>
           <a class="dropdown-item"
              href="#"
-             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount.json?filter_date=month"
+             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount?filter_date=month"
              data-action="dashboard-amount-loader#load">This Month</a>
         </li>
         <li>
           <a class="dropdown-item"
              href="#"
-             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount.json?filter_date=year"
+             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount?filter_date=year"
              data-action="dashboard-amount-loader#load">This Year</a>
         </li>
       </ul>
@@ -40,11 +40,15 @@
 
       <div class="d-flex align-items-center">
         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-          <%= content_tag :span, nil, class: "mdi mdi-arrow-#{filter == 'income' ? 'up text-success' : 'down text-danger'}" %>
+          <%= content_tag :span, nil, class: "mdi mdi-arrow-#{filter == 'income' ? 'down' : 'up'}" %>
         </div>
         <div class="ps-3">
           <h6 data-dashboard-amount-loader-target="amount"><%= amount %></h6>
         </div>
+      </div>
+
+      <div class="w-100 d-flex justify-content-center">
+        <%= link_to "Add #{filter}".upcase, new_transaction_path(type: filter), class: "btn btn-#{filter == 'income' ? 'success' : 'primary' } mt-2", style: 'font-size: 10px' %>
       </div>
     </div>
 
