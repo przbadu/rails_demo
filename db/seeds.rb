@@ -45,7 +45,7 @@ if Transaction.count.zero?
       amount: balance,
       transaction_type: kind,
       transaction_at: date,
-      notes: kind == 'income' ? "Deposited to #{wallet.name}" : "Expense for #{category.name.humanize}"
+      notes: kind == 'income' ? "Deposited to #{wallet.name}" : 'Expense for '
     )
 
     puts "Transaction #{t.id} added!"
