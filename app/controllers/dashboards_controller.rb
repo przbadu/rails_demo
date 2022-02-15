@@ -8,6 +8,7 @@ class DashboardsController < ApplicationController
     set_balance_amount
     set_income_line_chart_data
     set_expense_line_chart_data
+    set_expense_category_data
     @audits = Audited::Audit.first(5)
   end
 
@@ -37,6 +38,10 @@ class DashboardsController < ApplicationController
       expense: @expense_line_chart_data,
       filter_text: set_date_filter_text
     }
+  end
+
+  def expense_category_data
+    set_expense_category_data
   end
 
   private
@@ -83,6 +88,16 @@ class DashboardsController < ApplicationController
                                  @expense_line_chart_data.group_by_day(:transaction_at).sum(:amount_cents)
                                end
     @expense_line_chart_data = prepare_chart_data(@expense_line_chart_data)
+  end
+
+  def set_expense_category_data
+    @expense_categories = current_user.transactions
+                                      .joins(:category)
+                                      .group('categories.id')
+                                      .where('transactions.transaction_type': Transaction.transaction_types[:expense])
+                                      .order('sum(transactions.amount_cents) desc')
+                                      .limit(5)
+                                      .pluck('categories.name', 'categories.color', 'sum(transactions.amount_cents)')
   end
 
   def set_filters

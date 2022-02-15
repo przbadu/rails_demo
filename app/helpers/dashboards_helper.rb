@@ -15,4 +15,8 @@ module DashboardsHelper
       stacked: true
     }
   end
+
+  def pie_chart_data(data)
+    data.map { |d| [d.first, d.last] }
+  end
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get :income_amount
       get :expense_amount
       get :cashflow_data
+      get :category_data
     end
   end
   resources :transactions
