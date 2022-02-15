@@ -1,37 +1,6 @@
 <div class="col-xxl-4 col-md-6" data-controller="dashboard-amount-loader">
   <div class="card info-card <%= filter == 'income' ? 'revenue' : 'sales' %>-card">
-
-    <div class="filter">
-      <a class="icon" href="#" data-bs-toggle="dropdown">
-        <small data-dashboard-amount-loader-target="filter">This Month</small>
-        <i class="mdi mdi-chevron-down"></i>
-      </a>
-
-      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        <li class="dropdown-header text-start">
-          <h6>Filter</h6>
-        </li>
-
-        <li>
-          <a class="dropdown-item"
-             href="#"
-             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount?filter_date=today"
-             data-action="dashboard-amount-loader#load">Today</a>
-        </li>
-        <li>
-          <a class="dropdown-item"
-             href="#"
-             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount?filter_date=month"
-             data-action="dashboard-amount-loader#load">This Month</a>
-        </li>
-        <li>
-          <a class="dropdown-item"
-             href="#"
-             data-dashboard-amount-loader-url-param="/dashboards/<%= filter %>_amount?filter_date=year"
-             data-action="dashboard-amount-loader#load">This Year</a>
-        </li>
-      </ul>
-    </div>
+    <%= render 'dashboards/reports/filter', controller: 'dashboard-amount-loader', filter: "#{filter}_amount"%>
 
     <div class="card-body">
       <h5 class="card-title">
