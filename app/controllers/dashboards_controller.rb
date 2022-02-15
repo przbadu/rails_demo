@@ -8,6 +8,7 @@ class DashboardsController < ApplicationController
     set_balance_amount
     set_income_line_chart_data
     set_expense_line_chart_data
+    @audits = Audited::Audit.first(5)
   end
 
   def income_amount
