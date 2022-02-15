@@ -1,43 +1,21 @@
-<div class="col-12" data-controller="cashflow-filter">
+<div class="col-6" data-controller="cashflow-filter" data-chart-id="cashflowLineChart">
   <div class="card">
-
-    <div class="filter">
-      <a class="icon" href="#" data-bs-toggle="dropdown">
-        <small data-cashflow-filter-target="label">This month</small>
-        <i class="bi bi-chevron-down"></i>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        <li class="dropdown-header text-start">
-          <h6>Filter</h6>
-        </li>
-
-        <li>
-          <a class="dropdown-item"
-             href="#"
-             data-cashflow-filter-url-param="/dashboards/cashflow_data?filter_date=today"
-             data-action="cashflow-filter#filter"
-             >Today</a>
-        </li>
-        <li>
-          <a class="dropdown-item"
-             href="#"
-             data-cashflow-filter-url-param="/dashboards/cashflow_data?filter_date=month"
-             data-action="cashflow-filter#filter"
-             >This Month</a>
-        </li>
-        <li>
-          <a class="dropdown-item"
-             href="#"
-             data-cashflow-filter-url-param="/dashboards/cashflow_data?filter_date=year"
-             data-action="cashflow-filter#filter"
-             >This Year</a>
-        </li>
-      </ul>
-    </div>
+    <%= render 'dashboards/reports/filter', controller: 'cashflow-filter', filter: 'cashflow_data' %>
 
     <div class="card-body">
       <h5 class="card-title" data-cashflow-filter-target="chart">Cash Flow</h5>
-      <%= column_chart cashflow_line_chart_series, id: 'cashflowChart' %>
+      <%= line_chart cashflow_line_chart_series, id: 'cashflowLineChart' %>
+    </div>
+  </div>
+</div>
+
+<div class="col-6" data-controller="cashflow-filter" data-chart-id="cashflowColumnChart">
+  <div class="card">
+    <%= render 'dashboards/reports/filter', filter: 'cashflow_data', controller: 'cashflow-filter' %>
+
+    <div class="card-body">
+      <h5 class="card-title" data-cashflow-filter-target="chart">Cash Flow</h5>
+      <%= column_chart cashflow_line_chart_series, id: 'cashflowColumnChart' %>
     </div>
   </div>
 </div>

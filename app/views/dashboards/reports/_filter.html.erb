@@ -1,0 +1,24 @@
+<div class="filter">
+  <a class="icon" href="#" data-bs-toggle="dropdown">
+    <%= content_tag :small, "This Month", data: { "#{controller}-target": "label"} %>
+    <i class="mdi mdi-chevron-down"></i>
+  </a>
+
+  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+    <li class="dropdown-header text-start">
+      <h6>Filter</h6>
+    </li>
+    <li>
+      <%= link_to 'Today', '#', class: 'dropdown-item',
+        data: { action: "#{controller}#filter", "#{controller}-url-param": "/dashboards/#{filter}?filter_date=today" }%>
+    </li>
+    <li>
+      <%= link_to 'This Month', '#', class: 'dropdown-item',
+        data: { action: "#{controller}#filter", "#{controller}-url-param": "/dashboards/#{filter}?filter_date=month" }%>
+    </li>
+    <li>
+      <%= link_to 'This Year', '#', class: 'dropdown-item',
+        data: { action: "#{controller}#filter", "#{controller}-url-param": "/dashboards/#{filter}?filter_date=year" }%>
+    </li>
+  </ul>
+</div>

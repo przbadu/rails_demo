@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :categories
   has_many :wallets
   has_many :transactions
+
+  def username
+    email.split('@').first.to_s.humanize
+  end
 end

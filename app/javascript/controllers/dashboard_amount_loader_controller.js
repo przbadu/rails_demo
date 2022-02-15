@@ -2,10 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="dashboard-amount-loader"
 export default class extends Controller {
-  static targets = ['amount', 'filter']
+  static targets = ['amount', 'label']
   static values = { type: String }
 
-  load(event) {
+  filter(event) {
     const params = event.params
     event.preventDefault()
 
@@ -13,7 +13,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         this.amountTarget.innerText = data.amount
-        this.filterTarget.innerText = data.filter_text
+        this.labelTarget.innerText = data.filter_text
       })
   }
 }

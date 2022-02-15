@@ -2,6 +2,10 @@ class Wallet < ApplicationRecord
   # soft delete records
   acts_as_paranoid
 
+  # audit log
+  audited only: %i[name color icon balance_cents deleted_at],
+          on: %i[create update]
+
   # monetize
   monetize :balance_cents
 

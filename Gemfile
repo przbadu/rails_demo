@@ -73,6 +73,12 @@ gem 'pagy', '~> 5.10'
 # error reporting
 gem 'airbrake', '~> 13.0'
 
+# audit trail
+gem 'audited', '~> 5.0'
+
+# group by date for chartkick
+gem 'groupdate'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
