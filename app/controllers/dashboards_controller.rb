@@ -42,6 +42,11 @@ class DashboardsController < ApplicationController
 
   def expense_category_data
     set_expense_category_data
+
+    render json: {
+      filter_text: set_date_filter_text,
+      data: @expense_categories
+    }
   end
 
   private
@@ -95,6 +100,7 @@ class DashboardsController < ApplicationController
                                       .joins(:category)
                                       .group('categories.id')
                                       .where('transactions.transaction_type': Transaction.transaction_types[:expense])
+                                      .where('transactions.transaction_at': @from..@to)
                                       .order('sum(transactions.amount_cents) desc')
                                       .limit(5)
                                       .pluck('categories.name', 'categories.color', 'sum(transactions.amount_cents)')

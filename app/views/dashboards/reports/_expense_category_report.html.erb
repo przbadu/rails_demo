@@ -1,8 +1,8 @@
-<div class="card" data-controller="budget-filter">
-  <%= render 'dashboards/reports/filter', controller: 'budget-filter', filter: 'budget_data' %>
+<div class="card" data-controller="expense-category-filter" data-chart-id="expenseCategoryChart">
+  <%= render 'dashboards/reports/filter', controller: 'expense-category-filter', filter: 'expense_category_data' %>
 
   <div class="card-body pb-0">
     <h5 class="card-title">Expense Categories (Top 5)</h5>
-    <%= pie_chart pie_chart_data(@expense_categories), colors: @expense_categories.map{|d| "##{d.second}"} %>
+    <%= pie_chart pie_chart_data(@expense_categories), id: 'expenseCategoryChart', colors: @expense_categories.map{|d| "##{d.second}"} %>
   </div>
 </div>
