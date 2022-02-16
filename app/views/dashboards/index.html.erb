@@ -16,9 +16,7 @@
         <%= render 'dashboards/reports/amount_card', filter: 'expense', amount: amount_to_currency(@expense_amount) %>
         <%= render 'dashboards/reports/balance_card', amount: amount_to_currency(@balance_amount) %>
         <%= render 'dashboards/reports/cashflow_report' %>
-
         <%= render 'dashboards/reports/recent_transactions' %>
-
       </div>
     </div><!-- End Left side columns -->
 
@@ -26,25 +24,7 @@
     <div class="col-lg-4">
       <%= render 'dashboards/reports/recent_activities' %>
       <%= render 'dashboards/reports/expense_category_report' %>
-
-
-      <!-- Website Traffic -->
-      <div class="card">
-        <div class="filter">
-          <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <li class="dropdown-header text-start">
-              <h6>Filter</h6>
-            </li>
-
-            <li><a class="dropdown-item" href="#">Today</a></li>
-            <li><a class="dropdown-item" href="#">This Month</a></li>
-            <li><a class="dropdown-item" href="#">This Year</a></li>
-          </ul>
-        </div>
-
-      </div><!-- End Right side columns -->
-
-    </div>
+    </div><!-- End Right side columns -->
+  </div>
 </section>
 

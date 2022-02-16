@@ -24,6 +24,7 @@ class Transaction < ApplicationRecord
   validates :transaction_type, presence: true
 
   # scopes
+  scope :recent, -> { order(created_at: :desc) }
   scope :filter_by_date, ->(from, to = Time.current) { where(transaction_at: from..to) }
   # NOTE: use below filters with filter_by_date, default filter is by all dates
   # scope :group_by_hour, ->(column_name = :transaction_at) { group("DATE_TRUNC('hour', #{column_name})") }

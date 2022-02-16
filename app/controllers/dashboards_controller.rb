@@ -9,6 +9,7 @@ class DashboardsController < ApplicationController
     set_income_line_chart_data
     set_expense_line_chart_data
     set_expense_category_data
+    @recent_transactions = current_user.transactions.recent.limit(10)
     @audits = Audited::Audit.first(5)
   end
 
