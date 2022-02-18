@@ -1,10 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<div class="pagetitle">
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to 'Home', root_path, class: 'breakcrumb-item' %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to 'Transactions', transactions_path, class: 'breakcrumb-item' %>
+      </li>
+      <li class="breadcrumb-item active">
+        <%= truncate @transaction.notes %>
+      </li>
+    </ol>
+  </nav>
+</div>
+
 
 <%= render @transaction %>
 
 <div>
-  <%= link_to "Edit this transaction", edit_transaction_path(@transaction) %> |
-  <%= link_to "Back to transactions", transactions_path %>
-
-  <%= button_to "Destroy this transaction", @transaction, method: :delete %>
 </div>

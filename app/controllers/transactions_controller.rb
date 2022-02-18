@@ -1,5 +1,7 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[show edit update destroy]
+  before_action :wallets, only: %i[new create edit update]
+  before_action :categories, only: %i[new create edit update]
 
   # GET /transactions or /transactions.json
   def index
@@ -11,7 +13,10 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/new
   def new
-    @transaction = current_user.transactions.new
+    @transaction = current_user.transactions.new(
+      transaction_at: Time.current,
+      transaction_type: :expense
+    )
   end
 
   # GET /transactions/1/edit
@@ -60,6 +65,14 @@ class TransactionsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_transaction
     @transaction = current_user.transactions.find(params[:id])
+  end
+
+  def wallets
+    @wallets ||= current_user.wallets.order(:name).load_async
+  end
+
+  def categories
+    @categories ||= current_user.categories.order(:name).load_async
   end
 
   # Only allow a list of trusted parameters through.

@@ -1,42 +1,50 @@
-<div id="<%= dom_id transaction %>">
-  <p>
-    <strong>Transaction at:</strong>
-    <%= transaction.transaction_at %>
-  </p>
+<section class="section">
+  <div class="row">
+    <div class="col-12">
 
-  <p>
-    <strong>Notes:</strong>
-    <%= transaction.notes %>
-  </p>
+      <div class="card">
 
-  <p>
-    <strong>Amount:</strong>
-    <%= transaction.amount %>
-  </p>
+        <div class="card-body">
 
-  <p>
-    <strong>Transaction type:</strong>
-    <%= transaction.transaction_type %>
-  </p>
-
-  <p>
-    <strong>Wallet:</strong>
-    <%= transaction.wallet_id %>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= transaction.category_id %>
-  </p>
-
-  <p>
-    <strong>Deleted at:</strong>
-    <%= transaction.deleted_at %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= transaction.user_id %>
-  </p>
-
-</div>
+          <div id="<%= dom_id transaction %>">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Transaction Type</th>
+                  <td><%= @transaction.transaction_type.humanize %></td>
+                </tr>
+                <tr>
+                  <th>Transaction Date</th>
+                  <td><%= format_date @transaction.transaction_at %></td>
+                </tr>
+                <tr>
+                  <th>Category</th>
+                  <td><%= @transaction.category.name %></td>
+                </tr>
+                <tr>
+                  <th>Wallet</th>
+                  <td><%= @transaction.wallet.name %></td>
+                </tr>
+                <tr>
+                  <th>Amount:</th>
+                  <td><%= amount_to_currency @transaction.amount %></td>
+                </tr>
+                <tr>
+                  <th>Notes:</th>
+                  <td><%= @transaction.notes %></td>
+                </tr>
+              </thead>
+            </table>
+            <tfoot>
+              <div class="d-flex">
+                <%= link_to "Edit", edit_transaction_path(@transaction), class: 'btn btn-success' %>
+                <%= link_to "Back", transactions_path, class: 'ms-2 btn btn-info' %>
+                <%= button_to "Destroy this transaction", @transaction, method: :delete, class: 'ms-2 btn btn-danger' %>
+              </div>
+            </tfoot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
